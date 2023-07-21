@@ -4,6 +4,8 @@ import {
   Image,
   useColorScheme,
   TouchableOpacity,
+  ScrollView,
+  Dimensions,
 } from "react-native";
 import React from "react";
 import { ButtonComponent, InputComponent } from "../../components";
@@ -15,6 +17,8 @@ import { LoginSchema } from "../../validations";
 
 export const LoginScreen = () => {
   const theme = useColorScheme();
+  const { height } = Dimensions.get("screen");
+  const customHeight = height < 600 ? "auto" : "100%";
 
   const {
     control,
@@ -30,7 +34,13 @@ export const LoginScreen = () => {
   };
 
   return (
-    <View className="flex flex-1 relative overflow-hidden">
+    <ScrollView
+      className="flex flex-grow relative overflow-hidden"
+      contentContainerStyle={{
+        flexGrow: 1,
+        height: customHeight,
+      }}
+    >
       <View className="bg-green-light w-full">
         <View className="p-8 space-y-2">
           <Text className="font-PoppinsSemiBold text-2xl text-white">
@@ -47,7 +57,7 @@ export const LoginScreen = () => {
         />
       </View>
       <View
-        className={`flex w-full relative -top-9 bottom-0 h-full rounded-t-3xl overflow-hidden p-8 ${
+        className={`flex w-full h-full relative -top-9 bottom-0 rounded-t-3xl overflow-hidden p-8 ${
           theme === "dark" ? "bg-green-dark" : "bg-white"
         }`}
       >
@@ -117,6 +127,6 @@ export const LoginScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
