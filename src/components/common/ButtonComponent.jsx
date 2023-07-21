@@ -1,8 +1,6 @@
 import { Text, TouchableOpacity } from "react-native";
-import React from "react";
-import { buttonProps } from "../../types";
 
-export const ButtonComponent: React.FC<buttonProps> = ({
+export const ButtonComponent = ({
   label,
   containerClassName,
   textClassName,

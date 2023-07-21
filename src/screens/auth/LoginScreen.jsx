@@ -10,12 +10,13 @@ import {
 import React from "react";
 import { ButtonComponent, InputComponent } from "../../components";
 import { useForm } from "react-hook-form";
-import { loginUserInput } from "../../types";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../../validations";
+import { useNavigation } from "@react-navigation/native";
 
 export const LoginScreen = () => {
+  const navigation = useNavigation();
   const theme = useColorScheme();
   const { height } = Dimensions.get("screen");
   const customHeight = height < 600 ? "auto" : "100%";
@@ -25,11 +26,11 @@ export const LoginScreen = () => {
     formState: { errors },
     handleSubmit,
     setValue,
-  } = useForm<loginUserInput>({
+  } = useForm({
     resolver: yupResolver(LoginSchema),
   });
 
-  const handleLogin = (data: loginUserInput) => {
+  const handleLogin = (data) => {
     console.log(data);
   };
 
@@ -89,7 +90,7 @@ export const LoginScreen = () => {
               size={22}
               fillColor="#FF8933"
               unfillColor="transparent"
-              onPress={(isChecked: boolean) => {
+              onPress={(isChecked) => {
                 setValue("remember", isChecked);
               }}
             />
@@ -119,7 +120,9 @@ export const LoginScreen = () => {
           >
             Don't have an account?
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("RegisterScreen")}
+          >
             <Text className="text-orange-primary font-PoppinsRegular">
               {" "}
               Sign Up

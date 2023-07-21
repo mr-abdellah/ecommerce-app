@@ -1,18 +1,16 @@
 import { View, Text, TextInput, useColorScheme } from "react-native";
-import React from "react";
-import { inputProps } from "../../types";
 import { Controller } from "react-hook-form";
 import { errorMessage } from "../../helpers/errorMessage";
 
-export const InputComponent: React.FC<inputProps> = ({
+export const InputComponent = ({
   label,
+  containerClassName,
+  placeholderTextColor,
   placeholder,
   inputType,
   name,
   control,
-  placeholderTextColor,
-  containerClassName,
-  isPassword = false,
+  isPassword,
   errors,
 }) => {
   const theme = useColorScheme();

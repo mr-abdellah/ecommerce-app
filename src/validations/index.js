@@ -1,2 +1,2 @@
 // auth schemas
-export * from "./auth/LoginSchema";
+export * from "./AuthSchema";
