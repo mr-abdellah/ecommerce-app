@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import OnBoardingScreen from '../screens/onBoarding/OnBoardingScreen';
 import { LoginScreen } from "../screens";
-import { ScreenType } from "../types/navigationTypes";
+import { ScreenType } from "../types";
 
 export type StackParams = {
   LoginScreen: any;
