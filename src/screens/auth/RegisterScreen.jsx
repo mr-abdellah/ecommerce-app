@@ -11,10 +11,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterSchema } from "../../validations";
 import { useNavigation } from "@react-navigation/native";
+import useAuth from "../../hooks/auth/useAuth";
 
 export const RegisterScreen = () => {
   const navigation = useNavigation();
   const theme = useColorScheme();
+  const { signupLoading, signupMutate } = useAuth();
 
   const {
     control,
@@ -26,6 +28,8 @@ export const RegisterScreen = () => {
 
   const handleRegister = (data) => {
     console.log(data);
+    delete data["password_confirmation"];
+    signupMutate(data);
   };
 
   return (

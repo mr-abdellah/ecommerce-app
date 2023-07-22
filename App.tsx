@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthContext from "./src/context/AuthContext";
 import { Provider } from "react-redux";
 import store from "./src/features/store";
+import Toast from "react-native-toast-message";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ export default function App() {
           <Provider store={store}>
             <AuthContext>
               <AppNav />
+              <Toast />
             </AuthContext>
           </Provider>
         </QueryClientProvider>

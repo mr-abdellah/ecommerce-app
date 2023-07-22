@@ -5,7 +5,7 @@ const loginUserApi = async (data) => {
 };
 
 const registerUserApi = async (data) => {
-  return await axiosInstance.get("/register", data);
+  return await axiosInstance.post("/register", data);
 };
 
 const forgetPasswordApi = async (data) => {
