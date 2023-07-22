@@ -14,12 +14,14 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../../validations";
 import { useNavigation } from "@react-navigation/native";
+import useAuth from "../../hooks/auth/useAuth";
 
 export const LoginScreen = () => {
   const navigation = useNavigation();
   const theme = useColorScheme();
   const { height } = Dimensions.get("screen");
   const customHeight = height < 600 ? "auto" : "100%";
+  const { loginLoading, loginMutate } = useAuth();
 
   const {
     control,
@@ -32,6 +34,7 @@ export const LoginScreen = () => {
 
   const handleLogin = (data) => {
     console.log(data);
+    loginMutate(data);
   };
 
   return (
